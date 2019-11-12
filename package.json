@@ -9,7 +9,6 @@
   "repository": "git@github.com:drifterz28/ski-conditions.git",
   "author": "Chris Whitney <chris@chriswhitney.com>",
   "license": "MIT",
-  "type": "module",
   "nodemonConfig": {
     "ignore": [
       ".cache/*",
