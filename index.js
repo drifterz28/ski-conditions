@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 
 const env = process.env;
 const app = express();
@@ -13,6 +14,9 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 app.get('/', (req, res) => {
   res.status(200).json({health: 'good'});
