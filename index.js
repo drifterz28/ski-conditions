@@ -18,6 +18,11 @@ app.get('/', (req, res) => {
   res.status(200).json({health: 'good'});
 });
 
+app.post('/', (req, res) => {
+  const query = req.body;
+  res.status(200).json(query);
+});
+
 app.get('/location/:local', (req, res) => {
   res.status(200).json({location: req.params.local});
 });
