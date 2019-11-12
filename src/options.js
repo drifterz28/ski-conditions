@@ -1,6 +1,10 @@
-const resortList = require('./constants');
+const {resortList} = require('./constants');
 exports.options = function(user = '') {
   // console.log(resortList);
+  const showList = resortList.reduce((accum, item) => {
+    const lineBreak = accum.length > 0 ? ' ': '\n ';
+    return accum + `${lineBreak}• ${item.key} - ${item.name}`;
+  }, '');
   return {
     "blocks": [
       {
@@ -21,7 +25,7 @@ exports.options = function(user = '') {
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": "• meadows - Mt Hood Meadows \n • bachelor - Mt Bachelor \n • timberline - Mt Hood Timberline"
+          "text": showList
         }
       }
     ]

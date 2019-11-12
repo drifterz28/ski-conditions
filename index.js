@@ -22,18 +22,6 @@ app.use((req, res, next) => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
-const list = {
-  "blocks": [
-    {
-      "type": "section",
-      "text": {
-        "type": "mrkdwn",
-        "text": "Meadows: 44° 12hr 0\" \n Timberline: 40° 12hr 0\" \n Ski Bowl: err, no data"
-      }
-    }
-  ]
-};
-
 app.route('/:local?')
   .get((req, res) => {
     // normal query
