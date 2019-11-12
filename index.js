@@ -27,16 +27,23 @@ app.post('/', (req, res) => {
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": "*It's 80 degrees right now.*"
+                "text": "Meadows: 44° 12hr 0\""
             }
         },
         {
             "type": "section",
             "text": {
                 "type": "mrkdwn",
-                "text": "Partly cloudy today and tomorrow"
+                "text": "Timberline: 40° 12hr 0\""
             }
-        }
+        },
+        {
+          "type": "section",
+          "text": {
+              "type": "mrkdwn",
+              "text": "Ski Bowl: err, no data"
+          }
+      }
     ]
 });
 });
