@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 
 const { options } = require('./src/options');
 const { resortList } = require('./src/constants');
+const { converToSlack } = require('./src/display-location');
 
 const env = process.env;
 const app = express();
@@ -32,68 +33,6 @@ const list = {
     }
   ]
 };
-
-const meadows = {
-  "blocks": [
-    {
-      "type": "section",
-      "text": {
-        "type": "mrkdwn",
-        "text": "*Mt Hood Meadows*"
-      }
-    },
-    {
-      "type": "divider"
-    },
-    {
-      "type": "section",
-      "text": {
-        "type": "mrkdwn",
-        "text": "The *2019 Dundies* happened. \nAwards were given, heroes were recognized. \nCheck out *#dundies-2019* to see who won awards."
-      }
-    }
-  ]
-}
-
-const converToSlack = (data) => {
-  return {
-    blocks: [
-      {
-        type: 'section',
-        text: {
-          type: 'mrkdwn',
-          text: `*${data.name}*`
-        }
-      },
-      {
-        type: 'divider'
-      },
-      {
-        "type": "actions",
-        "elements": [
-          {
-            "type": "button",
-            "text": {
-              "type": "plain_text",
-              "text": "Directions",
-              "emoji": true
-            },
-            "url": data.location
-          },
-          {
-            "type": "button",
-            "text": {
-              "type": "plain_text",
-              "text": "Website",
-              "emoji": true
-            },
-            "url": data.url
-          }
-        ]
-      }
-    ]
-  }
-}
 
 app.route('/:local?')
   .get((req, res) => {
