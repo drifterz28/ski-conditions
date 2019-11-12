@@ -69,12 +69,28 @@ const converToSlack = (data) => {
         type: 'divider'
       },
       {
-        type: 'section',
-        text: {
-          type: 'mrkdwn',
-          text: `<${data.url}|Website> <${data.location}|Directions>`
-        }
-      },
+        "type": "actions",
+        "elements": [
+          {
+            "type": "button",
+            "text": {
+              "type": "plain_text",
+              "text": "Directions",
+              "emoji": true
+            },
+            "url": data.location
+          },
+          {
+            "type": "button",
+            "text": {
+              "type": "plain_text",
+              "text": "Website",
+              "emoji": true
+            },
+            "url": data.url
+          }
+        ]
+      }
     ]
   }
 }
