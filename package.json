@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon --experimental-modules index.js",
-    "start": "node --experimental-modules index.js"
+    "dev": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": "git@github.com:drifterz28/ski-conditions.git",
   "author": "Chris Whitney <chris@chriswhitney.com>",
