@@ -2,6 +2,9 @@ const {resortList} = require('./constants');
 exports.options = function(user = '') {
   // console.log(resortList);
   const showList = resortList.reduce((accum, item) => {
+    if(!item.working) {
+      return accum;
+    }
     const lineBreak = accum.length > 0 ? '\n ' : ' ';
     return accum + `${lineBreak}• ${item.key} - ${item.name}`;
   }, '');

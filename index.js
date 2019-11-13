@@ -46,7 +46,7 @@ app.route('/:local?')
     const resort = resortList[locationIndex];
 
     if(locationIndex < 0) {
-      res.status(200).json(options());
+      res.status(200).json(options(query.name));
     } else {
       const data = await getPageHtml(resort);
       const built = await converToSlack(data);
