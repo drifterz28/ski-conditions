@@ -37,7 +37,7 @@ app.route('/:local?')
       res.status(200).json(built);
     }
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
     // for slack
     const query = req.body;
     const text = query.text;
