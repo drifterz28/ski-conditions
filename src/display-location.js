@@ -1,11 +1,3 @@
-const meadows = require('./locations/meadows');
-const ashland = require('./locations/ashland');
-const bachelor = require('./locations/bachelor');
-const hoodoo = require('./locations/hoodoo');
-const skibowl = require('./locations/ski-bowl');
-const willamette = require('./locations/willamette-pass');
-const timberline = require('./locations/timberline');
-
 exports.converToSlack = function(data) {
   console.log(data)
   const {name, location, url, condition} = data;

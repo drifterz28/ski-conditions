@@ -1,29 +1,35 @@
 const cheerio = require('cheerio');
 const request = require('request-promise-native');
 
+const meadows = require('./locations/meadows');
+const ashland = require('./locations/ashland');
+const bachelor = require('./locations/bachelor');
+const hoodoo = require('./locations/hoodoo');
+const skibowl = require('./locations/ski-bowl');
+const willamette = require('./locations/willamette-pass');
+const timberline = require('./locations/timberline');
+
+const scrape = {
+  meadows,
+  timberline,
+  bachelor,
+  ashland,
+  hoodoo,
+  willamette,
+  skibowl
+};
+
 module.exports = function(location) {
-  console.log('test')
   var options = {
     uri: location.conditionsUrl,
     transform: (body) => cheerio.load(body)
   };
 
   return request(options).then($ => {
-    const $data = $('.conditions-glance');
-    const $current = $data.find('.conditions-current');
-    const $conditions = $current.find('.conditions');
-
-    const temperature = $current.find('.temperature').text();
-    const datetime = $current.find('time').attr('datetime');
-    const condition = $conditions.text();
-    const windspeed = $('.windspeed').eq(0).text();
-    const snowdepth = $('.snowdepth-base').text().trim();
-    location.condition = {
-      temperature,
-      condition,
-      windspeed,
-      snowdepth
+    const condition = scrape[location.key]($);
+    return {
+      ...location,
+      condition
     };
-    return location;
   });
 };

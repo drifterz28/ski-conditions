@@ -43,11 +43,14 @@ app.route('/:local?')
     const text = query.text;
 
     const locationIndex = resortList.findIndex((item) => item.key === text);
+    const resort = resortList[locationIndex];
 
     if(locationIndex < 0) {
-      res.status(200).json(options(query.user_name));
+      res.status(200).json(options());
     } else {
-      res.status(200).json(converToSlack(resortList[locationIndex]));
+      const data = await getPageHtml(resort);
+      const built = await converToSlack(data);
+      res.status(200).json(built);
     }
   });
 
