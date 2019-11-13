@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const { options } = require('./src/options');
 const { resortList } = require('./src/constants');
 const { converToSlack } = require('./src/display-location');
+const getPageHtml = require('./src/get-page-html');
 
 const env = process.env;
 const app = express();
@@ -23,14 +24,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.route('/:local?')
-  .get((req, res) => {
+  .get(async (req, res) => {
     // normal query
     const text = req.params.local;
     const locationIndex = resortList.findIndex((item) => item.key === text);
+    const resort = resortList[locationIndex];
     if(locationIndex < 0) {
       res.status(200).json(options());
     } else {
-      res.status(200).json(converToSlack(resortList[locationIndex]));
+      const data = await getPageHtml(resort);
+      const built = await converToSlack(data);
+      res.status(200).json(built);
     }
   })
   .post((req, res) => {
