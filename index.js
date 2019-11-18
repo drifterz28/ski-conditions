@@ -5,6 +5,7 @@ const { options } = require('./src/options');
 const { resortList } = require('./src/constants');
 const { converToSlack } = require('./src/display-location');
 const getPageHtml = require('./src/get-page-html');
+const bachelorPost = require('./src/bachelor-post');
 
 const env = process.env;
 const app = express();
@@ -22,6 +23,15 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:false}));
+
+app.get('/health', (req, res) => {
+  res.status(200).json({health: 'good'});
+});
+
+app.get('/push', (req, res) => {
+  bachelorPost();
+  res.status(200).json({status: 'done'});
+});
 
 app.route('/:local?')
   .get(async (req, res) => {
@@ -53,10 +63,6 @@ app.route('/:local?')
       res.status(200).json(built);
     }
   });
-
-app.get('/health', (req, res) => {
-  res.status(200).json({health: 'good'});
-});
 
 app.listen(port, () => {
   console.log(`Node app is running on http://0.0.0.0:${port}`);

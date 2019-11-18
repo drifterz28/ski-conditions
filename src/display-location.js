@@ -25,7 +25,7 @@ exports.converToSlack = function(data) {
         type: 'section',
         text: {
           type: 'mrkdwn',
-          text: `*Conditions:* \n Temp ${condition.temperature} \n Condition ${condition.condition} \n New Snow ${condition.snowdepth}`
+          text: `*Conditions:* \n Temp: ${condition.temperature} \n Weather: ${condition.condition} \n New Snow: ${condition.snowdepth}`
         },
         accessory: {
           type: 'button',
