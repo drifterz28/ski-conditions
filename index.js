@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
+require('dotenv').config();
 const { options } = require('./src/options');
 const { resortList } = require('./src/constants');
 const { converToSlack } = require('./src/display-location');

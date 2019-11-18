@@ -26,7 +26,7 @@ const template = (conditions) => ({
 module.exports = async function() {
   const resort = await getPageHtml(resortList[3]);
   const data = await template(resort.condition);
-  request.post('https://hooks.slack.com/services/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', {
+  request.post(process.env.SLACK_URL, {
     body: JSON.stringify(data)
   })
 };
