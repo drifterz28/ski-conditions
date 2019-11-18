@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
-    "update": "git pull -f"
+    "update": "git reset --hard origin/master"
   },
   "repository": "git@github.com:drifterz28/ski-conditions.git",
   "author": "Chris Whitney <chris@chriswhitney.com>",
