@@ -12,8 +12,8 @@ exports.resortList = [
     name: 'Hoodoo',
     location: 'https://www.google.com/maps/place/Hoodoo+Ski+Area/@44.3855997,-122.0614613,11.87z/data=!4m8!1m2!2m1!1shoodoo!3m4!1s0x0:0x28cc775b14baa46b!8m2!3d44.4087689!4d-121.8713379',
     url: 'https://skihoodoo.com/',
-    conditionsUrl: '',
-    working: false
+    conditionsUrl: 'http://www.santiampassskipatrol.org/wx/weather.htm',
+    working: true
   },
   {
     key: 'ashland',
