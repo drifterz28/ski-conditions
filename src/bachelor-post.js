@@ -39,14 +39,22 @@ const template = (conditions, nwsReport) => {
       },
       {
         type: "image",
-        title: { type: "plain_text", text: "Mt Bachelor base" },
-        image_url: `https://www.mtbachelor.com/webcams/pmxlift.jpg?${Date.now()}`,
+        image_url: `https://www.mtbachelor.com/webcams/snowstake.jpg?${Date.now()}`,
         alt_text: "Mt Bachelor base"
       },
       {
         "type": "divider"
       },
-      ...weatherData
+      ...weatherData,
+      {
+        "type": "context",
+        "elements": [
+          {
+            "type": "mrkdwn",
+            "text": "<https://forecast.weather.gov/MapClick.php?lat=43.98886243884903&lon=-121.68182373046875&site=pdt&smap=1&unit=0&lg=en|View More>"
+          }
+        ]
+      }
     ]
   }
 };
